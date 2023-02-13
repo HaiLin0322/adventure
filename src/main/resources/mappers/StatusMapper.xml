@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailin.adventure.model.dao.StatusMapper">
+  <resultMap id="BaseResultMap" type="com.hailin.adventure.model.pojo.Status">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="hp" jdbcType="INTEGER" property="hp" />
+    <result column="atk" jdbcType="INTEGER" property="atk" />
+    <result column="def" jdbcType="INTEGER" property="def" />
+    <result column="equip" jdbcType="VARCHAR" property="equip" />
+    <result column="exp" jdbcType="BIGINT" property="exp" />
+    <result column="exp_to_level_up" jdbcType="BIGINT" property="expToLevelUp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, role_id, `level`, hp, atk, def, equip, `exp`, exp_to_level_up
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hailin.adventure.model.pojo.Status">
+    insert into role_status (id, role_id, `level`, 
+      hp, atk, def, equip, 
+      `exp`, exp_to_level_up)
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+      #{hp,jdbcType=INTEGER}, #{atk,jdbcType=INTEGER}, #{def,jdbcType=INTEGER}, #{equip,jdbcType=VARCHAR}, 
+      #{exp,jdbcType=BIGINT}, #{expToLevelUp,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hailin.adventure.model.pojo.Status">
+    insert into role_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="hp != null">
+        hp,
+      </if>
+      <if test="atk != null">
+        atk,
+      </if>
+      <if test="def != null">
+        def,
+      </if>
+      <if test="equip != null">
+        equip,
+      </if>
+      <if test="exp != null">
+        `exp`,
+      </if>
+      <if test="expToLevelUp != null">
+        exp_to_level_up,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="hp != null">
+        #{hp,jdbcType=INTEGER},
+      </if>
+      <if test="atk != null">
+        #{atk,jdbcType=INTEGER},
+      </if>
+      <if test="def != null">
+        #{def,jdbcType=INTEGER},
+      </if>
+      <if test="equip != null">
+        #{equip,jdbcType=VARCHAR},
+      </if>
+      <if test="exp != null">
+        #{exp,jdbcType=BIGINT},
+      </if>
+      <if test="expToLevelUp != null">
+        #{expToLevelUp,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hailin.adventure.model.pojo.Status">
+    update role_status
+    <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="hp != null">
+        hp = #{hp,jdbcType=INTEGER},
+      </if>
+      <if test="atk != null">
+        atk = #{atk,jdbcType=INTEGER},
+      </if>
+      <if test="def != null">
+        def = #{def,jdbcType=INTEGER},
+      </if>
+      <if test="equip != null">
+        equip = #{equip,jdbcType=VARCHAR},
+      </if>
+      <if test="exp != null">
+        `exp` = #{exp,jdbcType=BIGINT},
+      </if>
+      <if test="expToLevelUp != null">
+        exp_to_level_up = #{expToLevelUp,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hailin.adventure.model.pojo.Status">
+    update role_status
+    set role_id = #{roleId,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      hp = #{hp,jdbcType=INTEGER},
+      atk = #{atk,jdbcType=INTEGER},
+      def = #{def,jdbcType=INTEGER},
+      equip = #{equip,jdbcType=VARCHAR},
+      `exp` = #{exp,jdbcType=BIGINT},
+      exp_to_level_up = #{expToLevelUp,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.hailin.adventure.model.pojo.Status">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="hp" jdbcType="INTEGER" property="hp" />
+    <result column="atk" jdbcType="INTEGER" property="atk" />
+    <result column="def" jdbcType="INTEGER" property="def" />
+    <result column="equip" jdbcType="VARCHAR" property="equip" />
+    <result column="exp" jdbcType="BIGINT" property="exp" />
+    <result column="exp_to_level_up" jdbcType="BIGINT" property="expToLevelUp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, role_id, `level`, hp, atk, def, equip, `exp`, exp_to_level_up
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hailin.adventure.model.pojo.Status">
+    insert into role_status (id, role_id, `level`, 
+      hp, atk, def, equip, 
+      `exp`, exp_to_level_up)
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+      #{hp,jdbcType=INTEGER}, #{atk,jdbcType=INTEGER}, #{def,jdbcType=INTEGER}, #{equip,jdbcType=VARCHAR}, 
+      #{exp,jdbcType=BIGINT}, #{expToLevelUp,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hailin.adventure.model.pojo.Status">
+    insert into role_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="hp != null">
+        hp,
+      </if>
+      <if test="atk != null">
+        atk,
+      </if>
+      <if test="def != null">
+        def,
+      </if>
+      <if test="equip != null">
+        equip,
+      </if>
+      <if test="exp != null">
+        `exp`,
+      </if>
+      <if test="expToLevelUp != null">
+        exp_to_level_up,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="hp != null">
+        #{hp,jdbcType=INTEGER},
+      </if>
+      <if test="atk != null">
+        #{atk,jdbcType=INTEGER},
+      </if>
+      <if test="def != null">
+        #{def,jdbcType=INTEGER},
+      </if>
+      <if test="equip != null">
+        #{equip,jdbcType=VARCHAR},
+      </if>
+      <if test="exp != null">
+        #{exp,jdbcType=BIGINT},
+      </if>
+      <if test="expToLevelUp != null">
+        #{expToLevelUp,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hailin.adventure.model.pojo.Status">
+    update role_status
+    <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="hp != null">
+        hp = #{hp,jdbcType=INTEGER},
+      </if>
+      <if test="atk != null">
+        atk = #{atk,jdbcType=INTEGER},
+      </if>
+      <if test="def != null">
+        def = #{def,jdbcType=INTEGER},
+      </if>
+      <if test="equip != null">
+        equip = #{equip,jdbcType=VARCHAR},
+      </if>
+      <if test="exp != null">
+        `exp` = #{exp,jdbcType=BIGINT},
+      </if>
+      <if test="expToLevelUp != null">
+        exp_to_level_up = #{expToLevelUp,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hailin.adventure.model.pojo.Status">
+    update role_status
+    set role_id = #{roleId,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      hp = #{hp,jdbcType=INTEGER},
+      atk = #{atk,jdbcType=INTEGER},
+      def = #{def,jdbcType=INTEGER},
+      equip = #{equip,jdbcType=VARCHAR},
+      `exp` = #{exp,jdbcType=BIGINT},
+      exp_to_level_up = #{expToLevelUp,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
